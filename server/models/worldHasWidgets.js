@@ -9,11 +9,11 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        idWorld: {
+        id_world: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        idWidgets: {
+        id_widgets: {
             type: Sequelize.INTEGER,
             allowNull: false
         }       

@@ -9,10 +9,10 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        idUser: {
+        id_user: {
             type: Sequelize.INTEGER,
             allowNull: false
-        },
+        },  
         url: {
             type: Sequelize.STRING
         }        

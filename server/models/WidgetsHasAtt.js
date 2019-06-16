@@ -9,15 +9,15 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        idAtt: {
+        id_att: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        idWidget: {
+        id_widget: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        idUser: {
+        id_user: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
