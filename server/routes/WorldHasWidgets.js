@@ -7,23 +7,23 @@ const bcrypt = require('bcrypt')
 const WorldHasWidgets = require("../models/worldHasWidgets")
 worldHasWidgets.use(cors())
 
-worldHasWidgets.post('/registerWidgets', (req,res) =>{
-    const worldHasWidgetsData ={
-        id_world : req.body.id_world,
-        id_widgets : req.body.id_widgets 
+worldHasWidgets.post('/registerWidgets', (req, res) => {
+    const worldHasWidgetsData = {
+        id_world: req.body.id_world,
+        id_widgets: req.body.id_widgets
     }
     WorldHasWidgets.findOne({
         where: {
-            id_world : req.body.id_world,
-            id_widgets : req.body.id_widgets
+            id_world: req.body.id_world,
+            id_widgets: req.body.id_widgets
         }
-    }).then(hasWidget =>{
-        if(!hasWidget){
+    }).then(hasWidget => {
+        if (!hasWidget) {
             WorldHasWidgets.create(worldHasWidgetsData)
                 .then(hasWidget => {
-                    res.json({status : hasWidget})
+                    res.json({ status: hasWidget })
                 })
-                .catch(err =>{
+                .catch(err => {
                     res.send('error: ' + err)
                 })
         }
@@ -37,23 +37,23 @@ worldHasWidgets.get('/findById', (req, res) => {
             id: req.body.id
         }
     })
-    .then(worldHasWidgets => {
-        res.json(worldHasWidgets)
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(worldHasWidgets => {
+            res.json(worldHasWidgets)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 worldHasWidgets.get('/findAll', (req, res) => {
     WorldHasWidgets.findAll({
     })
-    .then(worldHasWidgets => {
-        res.json(worldHasWidgets)
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(worldHasWidgets => {
+            res.json(worldHasWidgets)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 module.exports = worldHasWidgets

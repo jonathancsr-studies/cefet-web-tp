@@ -18,6 +18,6 @@ module.exports = db.sequelize.define(
         password: {
             type: Sequelize.STRING
         },
-        
+
     }
 )

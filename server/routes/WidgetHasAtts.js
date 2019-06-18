@@ -13,23 +13,23 @@ widgetsHasAtt.get('/findById', (req, res) => {
             id: req.body.id
         }
     })
-    .then(widgetsHasAtt => {
-        res.json(widgetsHasAtt)
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(widgetsHasAtt => {
+            res.json(widgetsHasAtt)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 widgetsHasAtt.get('/findAll', (req, res) => {
     WidgetsHasAtt.findAll({
     })
-    .then(widgetsHasAtt => {
-        res.json(widgetsHasAtt)
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(widgetsHasAtt => {
+            res.json(widgetsHasAtt)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 module.exports = widgetsHasAtt

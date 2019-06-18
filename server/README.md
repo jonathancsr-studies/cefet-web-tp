@@ -13,8 +13,18 @@ Para startar use o comando
 Os caminhos disponiveis são os seguintes
 
     - '/users'
-      - '/register'
+      - '/register' 
+        - {
+          - username
+          - email
+          - password
+          - create_time 
+        - }
       - '/login'
+        - {
+          - email
+          - password
+        - }
     - '/atributes'
       - '/findById'
     - '/widgets'
