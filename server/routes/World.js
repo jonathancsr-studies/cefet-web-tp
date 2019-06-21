@@ -13,23 +13,23 @@ world.get('/findById', (req, res) => {
             id: req.body.id
         }
     })
-    .then(world => {
-        res.json(world)
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(world => {
+            res.json(world)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 world.get('/findAll', (req, res) => {
     World.findAll({
     })
-    .then(world => {
-        res.json(world)
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
+        .then(world => {
+            res.json(world)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 module.exports = world

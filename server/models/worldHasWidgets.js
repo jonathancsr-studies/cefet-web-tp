@@ -16,6 +16,6 @@ module.exports = db.sequelize.define(
         id_widgets: {
             type: Sequelize.INTEGER,
             allowNull: false
-        }       
+        }
     }
 )

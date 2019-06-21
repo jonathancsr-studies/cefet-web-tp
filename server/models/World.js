@@ -12,9 +12,9 @@ module.exports = db.sequelize.define(
         id_user: {
             type: Sequelize.INTEGER,
             allowNull: false
-        },  
+        },
         url: {
             type: Sequelize.STRING
-        }        
+        }
     }
 )
