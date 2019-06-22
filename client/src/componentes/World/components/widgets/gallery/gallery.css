@@ -1,5 +1,6 @@
 .gallery-dimension{
     width: 400px;
     height: 300px;
+    margin-top: 300px;
     position: absolute;
 }
