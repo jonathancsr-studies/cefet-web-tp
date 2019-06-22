@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter >
       <Switch>
         <Route path="/" exact={true} component={Index} />
-        <Route path="/myWorld" exact={true} component={World} />
+        <Route path="/World*" component={World} />
         <Route component={() => (<div>404 Not found </div>)} />
       </Switch>
     </ BrowserRouter>

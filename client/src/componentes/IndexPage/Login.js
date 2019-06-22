@@ -6,6 +6,7 @@ import { Link,withRouter } from 'react-router-dom'
 
 import './loginAndRegister.css'
 import { login } from "../UserFunctions";
+const jwt = require("jsonwebtoken")
 
 class Login extends Component {
     constructor(props, context) {
@@ -37,9 +38,8 @@ class Login extends Component {
         }
 
         login(user).then( res => {
-            if(res){
-                console.log("logouuu")
-                this.props.history.push('/myWorld'+ res.data)
+            if(res){   
+                this.props.history.push('/World'+ jwt.decode(localStorage.usertoken).id)
             }
         })
     }

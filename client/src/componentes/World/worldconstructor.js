@@ -5,13 +5,10 @@ const instance = axios.create({
     timeout: 1000
   });
 
-export const register = newUser => {
+export const skyType = sky => {
     return instance
-    .post('users/register', {
-        username: newUser.username,
-        email: newUser.email,
-        password: newUser.password,
-        name: newUser.name,
+    .post('w/register', {
+        
     })
     .then(res => {
         console.log("Registered")
