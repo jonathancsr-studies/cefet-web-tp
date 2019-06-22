@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import { Link, withRouter } from 'react-router-dom'
 import { register } from '../UserFunctions'
 
+
 import './loginAndRegister.css'
 
 class Register extends Component {
