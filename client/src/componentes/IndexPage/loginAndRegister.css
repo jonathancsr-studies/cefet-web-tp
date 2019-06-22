@@ -107,6 +107,7 @@ font-family: 'helveticaneue', cursive;
 
 .textGoldColor{
     color: #f9c154;
+    text-decoration: none; 
     text-shadow: 3px 4px 4px rgba(15,40,47,0.48); ;
 }
 

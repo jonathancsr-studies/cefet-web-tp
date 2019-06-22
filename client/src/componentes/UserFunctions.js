@@ -1,11 +1,17 @@
 import axios from 'axios'
 
+const instance = axios.create({
+    baseURL: 'http://localhost:5000',
+    timeout: 1000
+  });
+
 export const register = newUser => {
-    return axios
+    return instance
     .post('users/register', {
         username: newUser.username,
         email: newUser.email,
-        password: newUser.password
+        password: newUser.password,
+        name: newUser.name,
     })
     .then(res => {
         console.log("Registered")
@@ -13,7 +19,7 @@ export const register = newUser => {
 }
 
 export const login = user => {
-    return axios
+    return instance
     .post('users/login',{
         email: user.email,
         password: user.password

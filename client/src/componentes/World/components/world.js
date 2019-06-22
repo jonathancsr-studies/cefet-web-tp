@@ -8,8 +8,11 @@ import Character from './../character/character'
 
 import './world.css'
 
+const userId = window.location.href.split('World')[1]
+
 class world extends Component {
     
+
     componentDidMount(){
         disableScroll.on();
         var world = document.querySelector('body')

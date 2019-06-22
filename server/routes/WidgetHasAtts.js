@@ -32,4 +32,19 @@ widgetsHasAtt.get('/findAll', (req, res) => {
         })
 })
 
+widgetsHasAtt.get('/findSky', (req, res) => {
+    WidgetsHasAtt.findOne({
+        where: {
+            id_att: 1,
+            id_widget: 1,
+            id_user: req.body.id_user
+        }
+    })
+        .then(widgetsHasAtt => {
+            res.json(widgetsHasAtt)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 module.exports = widgetsHasAtt

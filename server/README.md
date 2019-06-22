@@ -6,6 +6,7 @@ Server construido com as seguintes bibliotecas
     - Cors
     - JWT
     - Bcrypt
+    - Sequelize
 
 Para startar use o comando
     -npm run dev

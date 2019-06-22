@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { Link, withRouter } from 'react-router-dom'
-import { register } from '../UserFunctios'
+import { register } from '../UserFunctions'
 
 
 import './loginAndRegister.css'
@@ -20,6 +20,7 @@ class Register extends Component {
             username: '',
             email: '',
             password: '',
+            firstname: ''
         };
 
         this.onChange = this.onChange.bind(this)
@@ -31,20 +32,19 @@ class Register extends Component {
     }
 
     onSubmit(e) {
-        console.log("chamouuuuu")
         e.preventDefault()
 
         const user = {
             username: this.state.username,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            name: this.state.firstname
         }
 
         register(user).then(res => {
             this.props.history.push('/')
         })
     }
-
 
     handleClose() {
         this.setState({ show: false });
@@ -66,7 +66,12 @@ class Register extends Component {
                     <Modal.Body>
                         <Form>
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control type="text" placeholder="Nome" /><br />
+                            <Form.Control
+                                name="firstname"
+                                value={this.state.firstname}
+                                onChange={this.onChange}
+                                type="text"
+                                placeholder="Nome" /><br />
                             <Form.Label>NickName</Form.Label>
                             <Form.Control name="username"
                                 value={this.state.username}
@@ -92,7 +97,7 @@ class Register extends Component {
                                 </div>
                             ))}
                             <Button variant="primary blueBackgroundColor marginCenter textGoldColor" type="submit">
-                                <Link to='/myWorld' onClick={this.onSubmit}> Register </Link>
+                                <Link to='/' onClick={this.onSubmit}> Register </Link>
                             </Button>
                         </Form>
                     </Modal.Body>
@@ -102,4 +107,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default withRouter(Register)

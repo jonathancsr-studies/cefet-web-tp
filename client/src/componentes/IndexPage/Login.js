@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import { Link } from 'react-router-dom'
+import { Link,withRouter } from 'react-router-dom'
 
 import './loginAndRegister.css'
-import { login } from "../UserFunctios";
+import { login } from "../UserFunctions";
+const jwt = require("jsonwebtoken")
 
 class Login extends Component {
     constructor(props, context) {
@@ -37,9 +38,8 @@ class Login extends Component {
         }
 
         login(user).then( res => {
-            if(res){
-                console.log("logouuu")
-                this.props.history.push('/')
+            if(res){   
+                this.props.history.push('/World'+ jwt.decode(localStorage.usertoken).id)
             }
         })
     }
@@ -91,4 +91,4 @@ class Login extends Component {
             }
         }
         
-export default Login
+export default withRouter(Login)
