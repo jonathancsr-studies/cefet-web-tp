@@ -7,6 +7,37 @@ const bcrypt = require('bcrypt')
 const WidgetsHasAtt = require("../models/WidgetsHasAtt")
 widgetsHasAtt.use(cors())
 
+
+widgetsHasAtt.post('/register', (req, res) => {
+    const widgetHasAttData = {
+        id_att: req.body.id_att,
+        id_widget: req.body.id_widget,
+        id_user: req.body.id_user,
+        description: req.body.description
+    }
+    WidgetsHasAtt.findOne({
+        where: {
+            id_att: req.body.id_att,
+            id_widget: req.body.id_widget,
+            id_user: req.body.id_user
+        }
+    })
+        .then(widgetHasAtt => {
+            if (!widgetHasAtt) {
+                WidgetsHasAtt.create(widgetHasAttData)
+                    .then(widgetHasAtt => {
+                        res.json({ status: widgetHasAtt.id + ' registered' })
+                    })
+                    .catch(err => {
+                        res.send('error: ' + err)
+                    })
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 widgetsHasAtt.get('/findById', (req, res) => {
     console.log(req.body.userId)
     WidgetsHasAtt.findOne({
