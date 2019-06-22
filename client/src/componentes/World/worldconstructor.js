@@ -1,31 +1,22 @@
 import axios from 'axios'
-
+const userId = window.location.href.split('World')[1]
 const instance = axios.create({
     baseURL: 'http://localhost:5000',
     timeout: 1000
   });
 
-export const skyType = sky => {
+export const skyType = () => {
     return instance
-    .post('w/register', {
-        
+    .post('/widgetsHasAtts/findSky/', {
+        id_user: userId,
     })
     .then(res => {
-        console.log("Registered")
-    })
-}
-
-export const login = user => {
-    return instance
-    .post('users/login',{
-        email: user.email,
-        password: user.password
-    })
-    .then(res => {
-        localStorage.setItem('usertoken', res.data)
+        console.log(res)
         return res.data
     })
     .catch(err => {
+        console.log(userId)
+        
         console.log(err)
     })
 }
