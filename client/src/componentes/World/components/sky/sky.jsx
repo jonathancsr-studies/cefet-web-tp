@@ -1,19 +1,29 @@
 import React, { Component } from 'react'
-import {skyType} from '../../worldconstructor'
+import { skyType } from '../worldconstructor'
 import './sky.css'
 const textures = [
-    "url('../../../static/sky.png')"
+    "../../../static/sky.png"
 ]
 class sky extends Component {
-    componentDidMount(){
-        var sky = document.getElementsByClassName('sky')
-       // sky.style.backgroundImage = textures[skyType().description]
-        console.log(skyType())
+    constructor(props, context){
+        super(props, context);
+
+        this.state = {
+            userId : window.location.href.split('World')[1],
+        }
+    }
+ 
+    componentDidMount() {
+        const userId = this.state.userId;
+        skyType(userId).then(res => {
+            var sky = document.getElementById('sky')
+            sky.style.backgroundImage = textures[res.data.description]
+        })
     }
 
     render() {
         return (
-            <div ref='sky' className='sky'></div>
+            <div ref='sky' id='sky'></div>
         )
     }
 }

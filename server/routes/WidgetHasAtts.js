@@ -8,9 +8,10 @@ const WidgetsHasAtt = require("../models/WidgetsHasAtt")
 widgetsHasAtt.use(cors())
 
 widgetsHasAtt.get('/findById', (req, res) => {
+    console.log(req.body.userId)
     WidgetsHasAtt.findOne({
         where: {
-            id: req.body.id
+            userId: req.body.userId
         }
     })
         .then(widgetsHasAtt => {
@@ -32,7 +33,8 @@ widgetsHasAtt.get('/findAll', (req, res) => {
         })
 })
 
-widgetsHasAtt.get('/findSky', (req, res) => {
+widgetsHasAtt.post('/findSky', (req, res) => {
+    console.log("body id - " + req.body.id_user)
     WidgetsHasAtt.findOne({
         where: {
             id_att: 1,
@@ -40,8 +42,8 @@ widgetsHasAtt.get('/findSky', (req, res) => {
             id_user: req.body.id_user
         }
     })
-        .then(widgetsHasAtt => {
-            res.json(widgetsHasAtt)
+        .then(WidgetsHasAtt => {
+            res.json(WidgetsHasAtt)
         })
         .catch(err => {
             res.send('error: ' + err)

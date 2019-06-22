@@ -1,22 +1,18 @@
 import axios from 'axios'
-const userId = window.location.href.split('World')[1]
 const instance = axios.create({
     baseURL: 'http://localhost:5000',
     timeout: 1000
   });
 
-export const skyType = () => {
+export const skyType = (numuser) => {
     return instance
     .post('/widgetsHasAtts/findSky/', {
-        id_user: userId,
+        id_user: numuser 
     })
     .then(res => {
-        console.log(res)
-        return res.data
+        return res
     })
     .catch(err => {
-        console.log(userId)
-        
         console.log(err)
     })
 }
