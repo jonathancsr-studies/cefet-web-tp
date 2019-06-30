@@ -32,7 +32,6 @@ class boxText extends Component {
             } else {
                 this.state.data = res.data[0].text;
             }
-            this.forceUpdate();
         })
 
     }

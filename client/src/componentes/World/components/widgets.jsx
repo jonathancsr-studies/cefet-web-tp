@@ -4,6 +4,7 @@ import './widgets.css'
 
 import Gallery from './widgets/gallery/Gallery'
 import BoxText from './widgets/boxText/boxText'
+import CardProfile from './widgets/cardProfile/CardProfile'
 let widgetsList;
 
 class widgets extends Component
@@ -21,6 +22,9 @@ class widgets extends Component
                     </li>
                     <li>
                         <BoxText></BoxText>
+                    </li>
+                    <li>
+                        <CardProfile></CardProfile>
                     </li>
                     
                 </ul>
