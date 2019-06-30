@@ -15,6 +15,7 @@ var WidgetsHasAtt = require('./routes/WidgetHasAtts')
 var World = require('./routes/World')
 var WorldHasWidgets = require('./routes/WorldHasWidgets')
 var Images = require('./routes/Images')
+var BoxText = require('./routes/BoxText')
 
 app.use('/users', Users)
 app.use('/atributes', Atributes)
@@ -23,6 +24,7 @@ app.use('/widgetsHasAtts', WidgetsHasAtt)
 app.use('/world', World)
 app.use('/worldHasWidgets', WorldHasWidgets)
 app.use('/images', Images)
+app.use('/boxText', BoxText)
 
 app.listen(port, () => {
     console.log("Server is running on port: " + port)

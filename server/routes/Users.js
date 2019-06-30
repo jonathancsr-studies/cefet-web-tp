@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt')
 const User = require("../models/User")
 user.use(cors())
 
+const World = require("../models/World")
+
+
 process.env.SECRET_KEY = 'secret'
 
 user.post('/register', (req, res) => {
@@ -18,6 +21,11 @@ user.post('/register', (req, res) => {
         create_time: today,
         name: req.body.name
     }
+    
+    const worldData ={
+        id_user: req.body.id_user
+    }
+
     User.findOne({
         where: {
             email: req.body.email
@@ -25,10 +33,11 @@ user.post('/register', (req, res) => {
     })
         .then(user => {
             if (!user) {
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                bcrypt.hash(req.bodzy.password, 10, (err, hash) => {
                     userData.password = hash
                     User.create(userData)
                         .then(user => {
+                            World.create(worldData);
                             res.json({ status: user.email + ' registered' })
                         })
                         .catch(err => {

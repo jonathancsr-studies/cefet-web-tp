@@ -2,24 +2,18 @@ const Sequelize = require("sequelize")
 const db = require("../database/db")
 
 module.exports = db.sequelize.define(
-    'user',
-    {
+    'box_text', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        username: {
-            type: Sequelize.STRING
+        text: {
+            type: Sequelize.TEXT
         },
-        email: {
-            type: Sequelize.STRING
-        },
-        password: {
-            type: Sequelize.STRING
-        },
-        name: {
-            type: Sequelize.STRING
+        id_user: {
+            type: Sequelize.INTEGER
         }
+
     }
 )
