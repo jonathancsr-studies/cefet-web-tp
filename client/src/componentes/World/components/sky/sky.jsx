@@ -13,11 +13,12 @@ class sky extends Component {
         }
     }
  
+    
     componentDidMount() {
         const userId = this.state.userId;
         skyType(userId).then(res => {
             var sky = document.getElementById('sky')
-            sky.style.backgroundImage = textures[res.data.description]
+            //sky.style.backgroundImage = textures[res.data.description]
         })
     }
 
