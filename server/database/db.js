@@ -1,6 +1,7 @@
+
 const Sequelize = require("sequelize")
 const db = {}
-const sequelize = new Sequelize('tpweb', 'root', '123456', {
+const sequelize = new Sequelize('tpweb', 'root', 'admin', {
     host: 'localhost',
     dialect: 'mysql',
 })
