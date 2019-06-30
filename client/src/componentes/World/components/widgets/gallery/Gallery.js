@@ -73,6 +73,7 @@ class Gallery extends Component {
       console.log("UPLOAD")
   })
     
+  
     this.findAllImage()
     this.forceUpdate();
   }

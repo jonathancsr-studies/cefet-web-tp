@@ -158,3 +158,19 @@ CREATE TABLE `worlds` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-06-30 12:30:36
+
+CREATE TABLE `tpweb`.`box_texts` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `text` LONGTEXT NULL DEFAULT NULL,
+  `id_user` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_fk_user_idx` (`id_user` ASC) VISIBLE,
+  CONSTRAINT `fk_fk_user`
+    FOREIGN KEY (`id_user`)
+    REFERENCES `tpweb`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `tpweb`.`box_texts` 
+ADD COLUMN `createdAt` VARCHAR(45) NULL DEFAULT NULL AFTER `id_user`,
+ADD COLUMN `updatedAt` VARCHAR(45) NULL DEFAULT NULL AFTER `createdAt`;
