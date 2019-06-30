@@ -7,6 +7,7 @@ import { Link, withRouter } from 'react-router-dom'
 import './loginAndRegister.css'
 import Facebook from './FacebookLoginButton'
 import { login } from "../UserFunctions"
+import { userStatus } from "../World/components/widgets/cardProfile/cardUtils"
 const jwt = require("jsonwebtoken")
 
 class Login extends Component {
@@ -84,11 +85,14 @@ class Login extends Component {
                             <Button variant="primary center blueBackgroundColor textGoldColor" type="submit">
                                 <Link to='/myWorld' onClick={this.onSubmit}> LOGIN </Link>
                             </Button>
-                            <Facebook />                                                 
+                            <Button variant="primary center blueBackgroundColor textGoldColor" type="submit">
+                                <Link onClick={this.userStatus}> teste </Link>
+                            </Button>
+                            <Facebook />
                         </Form>
                     </Modal.Body>
                 </Modal>
-                </>
+            </>
         );
     }
 }

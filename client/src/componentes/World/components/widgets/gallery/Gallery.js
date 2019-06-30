@@ -9,7 +9,7 @@ import { getAllImages } from '../../../../WorldFunctions'
 import ImageUploader from 'react-images-upload';
 const jwt = require("jsonwebtoken")
 const userId = window.location.href.split('World')[1]
-const userLogado = jwt.decode(localStorage.usertoken).id;
+const userLogado = localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
 const editavel = userId == userLogado ? true : false;
 
 const image2base64 = require('image-to-base64');
