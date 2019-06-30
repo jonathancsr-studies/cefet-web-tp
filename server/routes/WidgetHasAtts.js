@@ -7,10 +7,42 @@ const bcrypt = require('bcrypt')
 const WidgetsHasAtt = require("../models/WidgetsHasAtt")
 widgetsHasAtt.use(cors())
 
-widgetsHasAtt.get('/findById', (req, res) => {
+
+widgetsHasAtt.post('/register', (req, res) => {
+    const widgetHasAttData = {
+        id_att: req.body.id_att,
+        id_widget: req.body.id_widget,
+        id_user: req.body.id_user,
+        description: req.body.description
+    }
     WidgetsHasAtt.findOne({
         where: {
-            id: req.body.id
+            id_att: req.body.id_att,
+            id_widget: req.body.id_widget,
+            id_user: req.body.id_user
+        }
+    })
+        .then(widgetHasAtt => {
+            if (!widgetHasAtt) {
+                WidgetsHasAtt.create(widgetHasAttData)
+                    .then(widgetHasAtt => {
+                        res.json({ status: widgetHasAtt.id + ' registered' })
+                    })
+                    .catch(err => {
+                        res.send('error: ' + err)
+                    })
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+widgetsHasAtt.get('/findById', (req, res) => {
+    console.log(req.body.userId)
+    WidgetsHasAtt.findOne({
+        where: {
+            userId: req.body.userId
         }
     })
         .then(widgetsHasAtt => {
@@ -32,7 +64,8 @@ widgetsHasAtt.get('/findAll', (req, res) => {
         })
 })
 
-widgetsHasAtt.get('/findSky', (req, res) => {
+widgetsHasAtt.post('/findSky', (req, res) => {
+    console.log("body id - " + req.body.id_user)
     WidgetsHasAtt.findOne({
         where: {
             id_att: 1,
@@ -40,8 +73,8 @@ widgetsHasAtt.get('/findSky', (req, res) => {
             id_user: req.body.id_user
         }
     })
-        .then(widgetsHasAtt => {
-            res.json(widgetsHasAtt)
+        .then(WidgetsHasAtt => {
+            res.json(WidgetsHasAtt)
         })
         .catch(err => {
             res.send('error: ' + err)

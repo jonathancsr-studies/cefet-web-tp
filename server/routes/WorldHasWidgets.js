@@ -30,7 +30,19 @@ worldHasWidgets.post('/registerWidgets', (req, res) => {
     })
 
 })
-
+worldHasWidgets.post('/findByUserId', (req, res) => {
+    WorldHasWidgets.findOne({
+        where: {
+            id_world: req.body.id_world
+        }
+    })
+        .then(worldHasWidgets => {
+            res.json(worldHasWidgets)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 worldHasWidgets.get('/findById', (req, res) => {
     WorldHasWidgets.findOne({
         where: {

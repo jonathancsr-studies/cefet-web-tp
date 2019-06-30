@@ -42,6 +42,7 @@ class Register extends Component {
         }
 
         register(user).then(res => {
+            
             this.props.history.push('/')
         })
     }
