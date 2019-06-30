@@ -11,6 +11,9 @@ module.exports = db.sequelize.define(
         },
         base64: {
             type: Sequelize.TEXT
+        },
+        id_user: {
+            type: Sequelize.INTEGER
         }
 
     }

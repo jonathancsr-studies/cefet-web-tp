@@ -7,7 +7,8 @@ image.use(cors())
 
 image.post('/upload', (req, res) => {
     const imageData = {
-        base64: req.body.base64
+        base64: req.body.base64,
+        id_user : req.body.id_user
     }
     Image.findOne({
         where: {
@@ -22,6 +23,20 @@ image.post('/upload', (req, res) => {
                 .catch(err => {
                     res.send('error: ' + err)
                 })
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+image.post('/findAll', (req, res) => {
+    Image.findAll({
+        where: {
+            id_user : req.body.id_user
+        }
+    })
+        .then(image => {
+            res.json(image)
         })
         .catch(err => {
             res.send('error: ' + err)

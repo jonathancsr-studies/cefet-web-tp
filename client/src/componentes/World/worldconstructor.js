@@ -14,9 +14,7 @@ export const skyType = () => {
         console.log(res)
         return res.data
     })
-    .catch(err => {
-        console.log(userId)
-        
+    .catch(err => {        
         console.log(err)
     })
 }

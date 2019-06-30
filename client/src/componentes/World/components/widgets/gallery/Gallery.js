@@ -5,26 +5,47 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
 import { uploadImage } from '../../../../WorldFunctions'
+import { getAllImages } from '../../../../WorldFunctions'
 import ImageUploader from 'react-images-upload';
+const userId = window.location.href.split('World')[1]
 
 const image2base64 = require('image-to-base64');
 var base64ToImage = require('base64-to-image');
-let validBase64 = new RegExp("^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{0,2}==)$","gim");
-
+var urls = [];
 class Gallery extends Component {
+  
   constructor(props){
     super(props)
+    var img ;
+    this.findAllImage();
     this.state = {
+      isOpen: {},
       selectedFile : null,
-       base64:null
+      base64:null,
+      images:null
     }
+    
   }
 
+  renderRow(row){
+    return (<div className="gallery-div" ><img src={row}></img>></div>)
+  }
+
+  
+  tempo (milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
   fileSelectedHandler = event=>{
     this.setState({
       selectedFile:URL.createObjectURL(event.target.files[0])
     })
-
+    console.log("TESTE DA  BUSCA DE IMAGENS")
+    console.log(this.img)
     let type = event.target.files[0].type;
 
     image2base64(URL.createObjectURL(event.target.files[0]))
@@ -44,43 +65,58 @@ class Gallery extends Component {
 
   }
   fileUploadHandler = () => {
-    
-    uploadImage(this.state.base64).then(res => {
+    const image = {
+      base64:this.state.base64,
+      id_user: userId
+    }
+    uploadImage(image).then(res => {
       console.log("UPLOAD")
   })
+    
+    this.findAllImage()
+    this.forceUpdate();
   }
-  componentDidMount() {
 
+  findAllImage=()=>{
+    
+    const user = {
+      id_user: userId
+    }
+    getAllImages(user).then(res => {
+      console.log("Imagens buscadas")
+      this.img = res
+      console.log(this.img)
+      
+      if(this.img!= null) { 
+    
+        for (var i=0 ;i<this.img.data.length;i++) {
+          urls.push(this.img.data[i].base64)
+        }
+        
+      }
+      this.forceUpdate();
+    })
+    
+  }
+  
+  componentDidMount() {
+    
+   
   }
 
   render() {
-    return (
-      <div >
    
+   console.log("NO RENDER")
+   console.log(urls)
+  
+    return (
+      
+      <div >
         <input type="file" id="file" onChange={this.fileSelectedHandler}></input>
         <button onClick={this.fileUploadHandler}>Upload</button>
-       
         <Carousel className="gallery-dimension">
-          <div>
-            <img src={this.state.selectedFile} />
-          </div>
+          {urls.map(this.renderRow)}
         </Carousel>
-         {/**
-          <div>
-            <img src="https://www.maistecnologia.com/wp-content/uploads/2014/11/leagueoflegendsbig_5f2028ee86d150ad8c456113ec9c54e3.jpg" />
-          </div>
-          <div>
-            <img src="http://s2.glbimg.com/pEc1hJsTyxNO7eutsl1FVTwxoQU=/695x0/s.glbimg.com/po/tt2/f/original/2015/09/17/lol.jpg" />
-          </div>
-          <div>
-            <img src="https://cdn.centraldeaprendizado.br.leagueoflegends.com/media/videos/thumbnails/cda_thumbs_LoL.jpg" />
-          </div>
-          <div>
-            <img src="https://www.bonde.com.br/img/bondenews/2018/08/img_1_2_49.jpg" />
-          </div>
-
-        </Carousel>
-        **/}
       </div>
   
     )
