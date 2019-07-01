@@ -1,11 +1,13 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000",
-    timeout: 1000
+    baseURL: "https://myuniverselol.herokuapp.com/",
+    timeout: 100000
 });
 
 export const uploadImage = image => {
+    console.log("upload images")
+    instance.defaults.timeout = 50000
     return instance
         .post('images/upload', {
             base64: image.base64,
@@ -17,7 +19,8 @@ export const uploadImage = image => {
 }
 
 export const getAllImages = user => {
-    instance.defaults.timeout = 5000
+    instance.defaults.timeout = 50000
+    console.log("get images")
     return instance
         .post('images/findAll', {
             id_user: user.id_user
@@ -28,6 +31,8 @@ export const getAllImages = user => {
 }
 
 export const saveText = boxText => {
+    instance.defaults.timeout = 50000
+    console.log("save box tesxt")
     return instance
         .post('boxText/save', {
             text: boxText.text,
@@ -39,6 +44,7 @@ export const saveText = boxText => {
 }
 
 export const getText = user => {
+    instance.defaults.timeout = 50000
     console.log("GET TEXT = " + user.id_user)
     return instance
         .post('boxText/findAll', {
