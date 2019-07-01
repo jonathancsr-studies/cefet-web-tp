@@ -23,10 +23,6 @@ class widgets extends Component
                     <li>
                         <BoxText></BoxText>
                     </li>
-                    <li>
-                        <CardProfile></CardProfile>
-                    </li>
-                    
                 </ul>
             </div>
         )
