@@ -86,7 +86,7 @@ class Login extends Component {
                                 <Link to='/myWorld' onClick={this.onSubmit}> LOGIN </Link>
                             </Button>
                             <Button variant="primary center blueBackgroundColor textGoldColor" type="submit">
-                                <Link onClick={this.userStatus}> teste </Link>
+                                <Link onClick={userStatus}> teste </Link>
                             </Button>
                             <Facebook />
                         </Form>
