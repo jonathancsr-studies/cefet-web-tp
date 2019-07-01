@@ -46,18 +46,12 @@ class board extends Component {
     onChange(content) {
         console.log('onChange', content);
     }
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
-
     render() {
         return (
             <div >
                 <img class="imagem" src={placa} alt="Placa" />
                 <div >
-
-                    <textarea class="texto"  id="noter-text-area" name="textarea" value={this.state.value} onChange={handleChange} />
+                    <textarea class="texto"   type="text" name="name" />
                 </div>
             </div>
 
