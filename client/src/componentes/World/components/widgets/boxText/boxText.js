@@ -6,7 +6,7 @@ import { getText } from '../../../../WorldFunctions'
 import { saveText } from '../../../../WorldFunctions'
 const jwt = require("jsonwebtoken")
 const userId = window.location.href.split('World')[1]
-const userLogado = localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
+const userLogado = localStorage || localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
 const editavel = userId == userLogado ? true : false;
 
 
