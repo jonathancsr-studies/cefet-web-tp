@@ -73,7 +73,6 @@ class boxText extends Component {
                             if (editavel) {
                                 saveText(boxText).then(res => {
                                     console.log("Salvo!")
-                                    this.forceUpdate();
                                 })
                             }
                         }}
