@@ -6,7 +6,7 @@ import { getText } from '../../../../WorldFunctions'
 import { saveText } from '../../../../WorldFunctions'
 const jwt = require("jsonwebtoken")
 const userId = window.location.href.split('World')[1]
-const userLogado = localStorage || localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
+const userLogado = localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
 const editavel = userId == userLogado ? true : false;
 
 
@@ -69,6 +69,7 @@ class boxText extends Component {
                                 id_user: userId,
                                 text: data
                             }
+                            console.log(editavel)
                             if (editavel) {
                                 saveText(boxText).then(res => {
                                     console.log("Salvo!")
