@@ -2,8 +2,7 @@ const Sequelize = require("sequelize")
 const db = require("../database/db")
 
 module.exports = db.sequelize.define(
-    'user',
-    {
+    'user', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -20,6 +19,9 @@ module.exports = db.sequelize.define(
         },
         name: {
             type: Sequelize.STRING
+        },
+        count: {
+            type: Sequelize.INTEGER
         }
     }
 )
