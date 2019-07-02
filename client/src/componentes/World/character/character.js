@@ -6,7 +6,7 @@ class Character extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rotation: 0, width: 0.2*648, height: 0.2*518 ,widthFrame: 648, heightFrame: 518 , speed: 1, srcX: 0, srcY: 0, posX: 0, posY: 800,
+            rotation: 0, width: 0.2*648, height: 0.2*518 ,widthFrame: 648, heightFrame: 518 , speed: 1, srcX: 0, srcY: 0, posX: 0, posY: 0,
             mvRight: false, mvLeft: false, mvUp: false, mvDown: false, countAnim: 0
         };
         this.tick = this.tick.bind(this);
@@ -35,7 +35,7 @@ class Character extends Component {
         var image = new Image();
         image.src = poro;
         let width = window.screen.width;
-        context.clearRect(0, 0, 2000, 2000);
+        context.clearRect(0, 0, window.screen.width, window.screen.height);
         context.save();
 
         context.drawImage(image, //Imagem de origem
@@ -163,8 +163,8 @@ class Character extends Component {
             <div className='div-style' >
                 <canvas className='no-margin-and-padding full-height canvas'
                     ref="canvas"
-                    width="1920px"
-                    height="1080px"
+                    width={window.screen.width}
+                    height="100px"
                 />
             </div>
         )
