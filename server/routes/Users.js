@@ -8,6 +8,28 @@ const User = require("../models/User")
 user.use(cors())
 
 const World = require("../models/World")
+var nodemailer = require('nodemailer');
+
+var $usuario = 'myuniverselol1@gmail.com';
+var $senha = 'br0379c12';
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: $usuario,
+        pass: $senha
+    }
+});
+
+var $destinatario = 'raylanderfl@gmail.com';
+
+var mailOptions = {
+    from: $usuario,
+    to: $destinatario,
+    subject: 'Enviando um email pelo Node.js',
+    text: 'Muito fácil enviar um email pelo node, tente você também!'
+};
+
 
 
 process.env.SECRET_KEY = 'secret'
@@ -21,16 +43,16 @@ user.post('/register', (req, res) => {
         create_time: today,
         name: req.body.name
     }
-    
-    const worldData ={
+
+    const worldData = {
         id_user: req.body.id_user
     }
 
     User.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
+            where: {
+                email: req.body.email
+            }
+        })
         .then(user => {
             if (!user) {
                 bcrypt.hash(req.bodzy.password, 10, (err, hash) => {
@@ -55,10 +77,10 @@ user.post('/register', (req, res) => {
 
 user.post('/login', (req, res) => {
     User.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
+            where: {
+                email: req.body.email
+            }
+        })
         .then(user => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -67,6 +89,66 @@ user.post('/login', (req, res) => {
                     })
                     res.send(token)
                 }
+            } else {
+                res.status(400).json({ error: 'User does not exist' })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        })
+})
+
+user.post('/updateCount', (req, res) => {
+    const userData = {
+        count: req.body.count
+    }
+
+
+    User.findOne({
+            where: {
+                id: req.body.id_user
+            }
+        })
+        .then(user => {
+            if (user) {
+                user.update(userData)
+                    .then(user => {
+                        res.json(user.dataValues)
+                    })
+                    .catch(err => {
+                        res.send('error: ' + err)
+                    })
+            } else {
+                res.status(400).json({ error: 'User does not exist' })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        })
+})
+
+
+user.post('/getUser', (req, res) => {
+
+    User.findOne({
+            where: {
+                id: req.body.id_user
+            }
+        })
+        .then(user => {
+            if (user) {
+                res.json(user.dataValues)
+                if (user.dataValues.count > 10) {
+                    mailOptions.to = user.dataValues.email;
+                    transporter.sendMail(mailOptions, function(error, info) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Email enviado: ' + info.response);
+                        }
+                    });
+                }
+
             } else {
                 res.status(400).json({ error: 'User does not exist' })
             }
