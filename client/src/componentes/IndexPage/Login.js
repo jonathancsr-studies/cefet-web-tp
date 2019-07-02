@@ -99,13 +99,7 @@ class Login extends Component {
             <
             Link to = '/myWorld'
             onClick = { this.onSubmit } > LOGIN < /Link> <
-            /Button> <
-            Button variant = "primary center blueBackgroundColor textGoldColor"
-            type = "submit" >
-            <
-            Link onClick = { this.userStatus } > teste < /Link> <
-            /Button> <
-            Facebook / >
+            /Button> 
             <
             /Form> <
             /Modal.Body> <
