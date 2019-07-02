@@ -1,6 +1,5 @@
-.boxText-dimension{
-    width: 400px;
-    height: 500px;
-    position: absolute;
-    margin-left: 500px;
+.count{
+    position: relative;
+    top: -121px;
+    z-index: 100000;
 }

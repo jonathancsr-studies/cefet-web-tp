@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import { Link, withRouter } from 'react-router-dom'
-import ColorPicker from '../World/preferences/ColorPicker'
-
+import Count from '../World/components/widgets/count/count'
 import './loginAndRegister.css'
 import Register from './Register'
 import Login from './Login'
@@ -42,7 +41,6 @@ class menu extends Component {
                     <Navbar fixed="top" className="justify-content-between" bg="dark" variant="dark">
                         <Navbar.Brand><Link className='textGoldColor' onClick={this.loginLogo}><img className='logo' src={logo} /></Link></Navbar.Brand>
                         <Navbar.Brand >
-                            <ColorPicker /> 
                             <Button className='textGoldColor' variant="primary blueBackgroundColor marginCenter textGoldColor" type="submit">
                                 <Link to='/' onClick={this.logOut.bind(this)}>
                                     Logout </Link>
