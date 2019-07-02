@@ -4,7 +4,7 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { getText } from '../../../../WorldFunctions'
 import { saveText } from '../../../../WorldFunctions'
-import placa from '../../../../static/placa.png'; 
+import placa from '../../../../static/placa.png';
 import { getUserData } from '../../../../UserFunctions'
 const jwt = require("jsonwebtoken")
 const userId = window.location.href.split('World')[1]
@@ -19,26 +19,28 @@ class board2 extends Component {
         this.findUserData();
         this.state = {
             data: null,
-            nameUser:null,
-            msg:null
+            nameUser: null,
+            msg: ""
         }
 
     }
 
     findUserData = () => {
-
-        const user = {
-          id_user: userId
+        if (userId != null) {
+            const user = {
+                id_user: userId
+            }
+            getUserData(user).then(res => {
+                console.log("#####USER######")
+                console.log(user)
+                this.state.nameUser = res.data.name
+                this.state.msg = editavel ? "Seja bem vindo " + this.state.nameUser + "!" : "Seja bem vindo ao mundo de " + this.state.nameUser + "!"
+                this.forceUpdate()
+            })
         }
-        getUserData(user).then(res => {
-            this.state.nameUser = res.data.name
-            this.state.msg = editavel ? "Seja bem vindo "+ this.state.nameUser +"!": "Seja bem vindo ao mundo de "+ this.state.nameUser +"!"
-            this.forceUpdate()
-        })
 
-        
-    
-      }
+
+    }
 
     componentDidMount() {
 
@@ -55,8 +57,8 @@ class board2 extends Component {
                 </div>
             </div>
 
-            )
-        }
+        )
     }
-    
+}
+
 export default board2

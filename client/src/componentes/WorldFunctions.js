@@ -32,7 +32,7 @@ export const getAllImages = user => {
 
 export const saveText = boxText => {
     instance.defaults.timeout = 50000
-    console.log("save box tesxt")
+    console.log("TENTANDO SALVAR TEXT")
     return instance
         .post('boxText/save', {
             text: boxText.text,

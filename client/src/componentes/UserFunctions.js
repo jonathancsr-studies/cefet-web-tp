@@ -14,7 +14,7 @@ export const register = newUser => {
             name: newUser.name,
         })
         .then(res => {
-            console.log("Registered")
+            return newUser
         })
 }
 
