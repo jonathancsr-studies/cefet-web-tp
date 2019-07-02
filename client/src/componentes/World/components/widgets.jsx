@@ -4,7 +4,9 @@ import './widgets.css'
 
 import Gallery from './widgets/gallery/Gallery'
 import BoxText from './widgets/boxText/boxText'
-import CardProfile from './widgets/cardProfile/CardProfile'
+import Board from './widgets/board/board'
+import Board2 from './widgets/board2/board2'
+import Count from './widgets/count/count'
 let widgetsList;
 
 class widgets extends Component
@@ -24,9 +26,11 @@ class widgets extends Component
                         <BoxText></BoxText>
                     </li>
                     <li>
-                        <CardProfile></CardProfile>
+                        <Board2></Board2>
                     </li>
-                    
+                    <li>
+                        <Count></Count>
+                    </li>
                 </ul>
             </div>
         )

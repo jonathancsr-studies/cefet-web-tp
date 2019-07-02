@@ -9,7 +9,9 @@ import { getAllImages } from '../../../../WorldFunctions'
 import ImageUploader from 'react-images-upload';
 const jwt = require("jsonwebtoken")
 const userId = window.location.href.split('World')[1]
-const userLogado = localStorage || localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
+console.log(localStorage)
+console.log(jwt.decode(localStorage.usertoken))
+const userLogado = localStorage.usertoken == null ? -1 : jwt.decode(localStorage.usertoken).id;
 const editavel = userId == userLogado ? true : false;
 
 const image2base64 = require('image-to-base64');
@@ -95,7 +97,7 @@ class Gallery extends Component {
       console.log(this.img)
 
       if (res.data.length == 0) {
-        urls.push('../../../../../static/fav.ico.png')
+        urls.push('https://uploaddeimagens.com.br/images/002/167/804/original/fav.ico.png?1562067402')
       } else {
         for (var i = 0; i < this.img.data.length; i++) {
           urls.push(this.img.data[i].base64)

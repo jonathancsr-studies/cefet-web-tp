@@ -174,3 +174,7 @@ CREATE TABLE `tpweb`.`box_texts` (
 ALTER TABLE `tpweb`.`box_texts` 
 ADD COLUMN `createdAt` VARCHAR(45) NULL DEFAULT NULL AFTER `id_user`,
 ADD COLUMN `updatedAt` VARCHAR(45) NULL DEFAULT NULL AFTER `createdAt`;
+
+ALTER TABLE `tpweb`.`users` 
+ADD COLUMN `count` INT(11) NULL DEFAULT NULL AFTER `name`;
+
