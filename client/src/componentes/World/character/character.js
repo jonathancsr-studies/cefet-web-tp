@@ -57,7 +57,7 @@ class Character extends Component {
     move() {
         if (( (window.screen.width) > this.state.posX && this.state.mvRight)) {
             this.state.posX = this.state.posX + 2;
-            this.state.srcY = this.state.heightFrame *1;
+            this.state.srcY = this.state.heightFrame *0;
         }
         else if ((0 < this.state.posX && this.state.mvLeft)) {
             this.state.posX = this.state.posX - 2;
