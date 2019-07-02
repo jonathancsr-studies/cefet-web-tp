@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/myuniverselol/static/css/main.b51f7854.chunk.css",
+    "main.js": "/myuniverselol/static/js/main.896ed0d0.chunk.js",
+    "main.js.map": "/myuniverselol/static/js/main.896ed0d0.chunk.js.map",
+    "runtime~main.js": "/myuniverselol/static/js/runtime~main.c76ee058.js",
+    "runtime~main.js.map": "/myuniverselol/static/js/runtime~main.c76ee058.js.map",
+    "static/css/2.45088820.chunk.css": "/myuniverselol/static/css/2.45088820.chunk.css",
+    "static/js/2.5dfd5a57.chunk.js": "/myuniverselol/static/js/2.5dfd5a57.chunk.js",
+    "static/js/2.5dfd5a57.chunk.js.map": "/myuniverselol/static/js/2.5dfd5a57.chunk.js.map",
+    "index.html": "/myuniverselol/index.html",
+    "precache-manifest.af132a1a80bee6948e9ad254c9a00b05.js": "/myuniverselol/precache-manifest.af132a1a80bee6948e9ad254c9a00b05.js",
+    "service-worker.js": "/myuniverselol/service-worker.js",
+    "static/css/2.45088820.chunk.css.map": "/myuniverselol/static/css/2.45088820.chunk.css.map",
+    "static/css/main.b51f7854.chunk.css.map": "/myuniverselol/static/css/main.b51f7854.chunk.css.map",
+    "static/media/loginAndRegister.css": "/myuniverselol/static/media/img1.194815fb.jpg",
+    "static/media/UploadIcon.svg": "/myuniverselol/static/media/UploadIcon.1cedb6e9.svg",
+    "static/media/img8.jpg": "/myuniverselol/static/media/img8.3388e9ad.jpg",
+    "static/media/logo.png": "/myuniverselol/static/media/logo.f5c5cd14.png",
+    "static/media/sky.css": "/myuniverselol/static/media/sky.d83d1811.png"
+  }
+}
